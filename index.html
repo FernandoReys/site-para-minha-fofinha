@@ -39,21 +39,55 @@ body{
   to{transform:translateY(-120vh) scale(1.3);opacity:0}
 }
 
-/* Intro */
+/* ================= INTRO ================= */
 .intro{
   position:fixed;
   inset:0;
   display:flex;
   flex-direction:column;
   align-items:center;
-  justify-content:center;
+  justify-content:space-between;
+  padding:40px 20px;
   text-align:center;
-  z-index:5;
+  z-index:10;
+  background:#000;
+  transition:opacity .8s ease, visibility .8s ease;
+}
+
+.intro.hide{
+  opacity:0;
+  visibility:hidden;
 }
 
 .intro h1{
-  margin-bottom:24px;
+  color:#fff;
+  font-size:13px;
 }
+
+/* Slideshow com DIVs */
+.slideshow{
+  width:100%;
+  max-width:420px;
+  aspect-ratio:3/4;
+  border-radius:22px;
+  overflow:hidden;
+  position:relative;
+  box-shadow:0 12px 35px rgba(0,0,0,.5);
+}
+
+.slide{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity 1s ease;
+}
+
+.slide.active{
+  opacity:1;
+}
+/* ======================================== */
 
 /* Botão */
 .btn{
@@ -64,7 +98,7 @@ body{
   background:linear-gradient(180deg,#ffeff8,#ffd7ee);
 }
 
-/* Jogo */
+/* 🎁 Jogo */
 .game{
   display:none;
   background:#fff;
@@ -75,17 +109,13 @@ body{
   width:95%;
 }
 
-/* GRID 100% FIXO */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
   gap:16px;
 }
 
-/* CARTA */
-.gift{
-  aspect-ratio:1/1;
-}
+.gift{aspect-ratio:1/1;}
 
 .card{
   width:100%;
@@ -105,7 +135,6 @@ body{
   transform:rotateY(180deg);
 }
 
-/* Faces */
 .face{
   position:absolute;
   inset:0;
@@ -165,18 +194,13 @@ body{
   width:90%;
 }
 #finalText{font-size:11px;line-height:1.8}
-
-@media (max-width:480px){
-  .intro h1{
-    font-size:13px;
-  }
-}
 </style>
 </head>
 
 <body>
 
 <script>
+/* 💗 Corações */
 const hearts=['💗','💖','💕'];
 setInterval(()=>{
   const h=document.createElement('div');
@@ -190,11 +214,26 @@ setInterval(()=>{
 },900);
 </script>
 
+<!-- INTRO -->
 <div class="intro">
-  <h1>Bem-vinda! fofinha pra você sempre lembrar de mim! 🍫💗</h1>
-  <button class="btn" onclick="start()">Começar</button>
+  <h1>Bem-vinda! Amor da minha vida pra você sempre lembrar de mim 💗</h1>
+
+  <div class="slideshow">
+    <div class="slide active" style="background-image:url('fotos/foto1.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto2.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto3.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto4.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto5.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto7.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto8.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto9.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto10.jpeg')"></div>
+  </div>
+
+  <button class="btn" onclick="start()">Começar 💖</button>
 </div>
 
+<!-- JOGO -->
 <div class="game" id="game">
   <div class="grid" id="grid"></div>
 
@@ -205,11 +244,16 @@ setInterval(()=>{
   </div>
 </div>
 
+<!-- MODAL -->
 <div class="modal" id="modal">
   <div class="modal-card">
     <p id="finalText"></p>
 
-   <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/7evftBiobEwWOwfxiTnnKc?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <iframe style="border-radius:12px"
+      src="https://open.spotify.com/embed/track/7evftBiobEwWOwfxiTnnKc"
+      width="100%" height="152" frameborder="0"
+      allow="autoplay; encrypted-media">
+    </iframe>
 
     <button class="btn" onclick="modal.classList.remove('show')" style="margin-top:14px">
       Enviar abraço
@@ -218,6 +262,17 @@ setInterval(()=>{
 </div>
 
 <script>
+/* Slideshow */
+const slides=document.querySelectorAll('.slide');
+let slideIndex=0;
+
+setInterval(()=>{
+  slides[slideIndex].classList.remove('active');
+  slideIndex=(slideIndex+1)%slides.length;
+  slides[slideIndex].classList.add('active');
+},4000);
+
+/* Jogo */
 const TOTAL=9;
 let opened=0;
 
@@ -225,13 +280,21 @@ const elogios=[
   'Você é minha fofinha! 💗',
   'Seu sorriso é meu lugar favorito 😍',
   'Você derrete qualquer coração 💕',
-  'Meu pensamento bom do dia é você 💖'
+  'Meu pensamento bom do dia é você 💖',
+  'te amo muito amorzinho',
+  'Quero você toda hora!',
+  'Amo esse seu jeitinho de ser!'
 ];
 
 function start(){
-  document.querySelector('.intro').style.display='none';
-  document.getElementById('game').style.display='block';
-  init();
+  const intro=document.querySelector('.intro');
+  intro.classList.add('hide');
+
+  setTimeout(()=>{
+    intro.style.display='none';
+    document.getElementById('game').style.display='block';
+    init();
+  },800);
 }
 
 function init(){
