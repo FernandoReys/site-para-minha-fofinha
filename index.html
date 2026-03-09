@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="shortcut icon" href="fotos/foto11.jpeg" type="image/x-icon">
 <title>Para alegrar o seu dia minha Fofinha!</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
@@ -114,6 +115,12 @@ position:fixed;
 top:20px;
 left:20px;
 z-index:20;
+}
+
+#letterText{
+font-size:11px;
+line-height:1.8;
+white-space:pre-line;
 }
 
 .grid{
@@ -281,6 +288,39 @@ setInterval(()=>{
   </div>
 </div>
 
+<button class="btn" onclick="openLetter()">
+💌 Abrir carta
+</button>
+<div class="modal" id="letterModal">
+
+  <div class="modal-card">
+
+    <h2>💌 Para minha fofinha</h2>
+
+    <p id="letterText">
+Amor, hoje eu sou uma pessoa melhor por você e por nós.
+
+Te amo muito e te desejo todos os dias.  
+Estou com saudades dos nossos abraços fortes e carinhosos.
+
+Sinto falta do seu cheiro e do seu beijo quando estou longe de você.
+
+Te amo muito minha fofinha, estou com saudades.
+
+Fim de semana chega logo!!!!!
+
+Beijos amor da minha vida.  
+Lembra de mim! 💗
+    </p>
+
+    <button class="btn" onclick="closeLetter()">
+Fechar
+    </button>
+
+  </div>
+
+</div>
+
 <script>
 /* Slideshow */
 const slides=document.querySelectorAll('.slide');
@@ -303,7 +343,9 @@ const elogios=[
   'Meu pensamento bom do dia é você 💖',
   'te amo muito amorzinho',
   'Quero você toda hora!',
-  'Amo esse seu jeitinho de ser!'
+  'Amo esse seu jeitinho de ser!',
+  'sinto sua falta amor!',
+  'Desejo vc todos os dias!!',
 ];
 
 function start(){
@@ -377,6 +419,14 @@ function backToPhotos(){
     intro.classList.remove("hide");
   },10);
 
+}
+
+function openLetter(){
+  document.getElementById("letterModal").classList.add("show")
+}
+
+function closeLetter(){
+  document.getElementById("letterModal").classList.remove("show")
 }
 </script>
 
