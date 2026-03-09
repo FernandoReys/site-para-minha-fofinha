@@ -109,6 +109,13 @@ body{
   width:95%;
 }
 
+.back-btn{
+position:fixed;
+top:20px;
+left:20px;
+z-index:20;
+}
+
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
@@ -219,15 +226,25 @@ setInterval(()=>{
   <h1>Bem-vinda Amor! Pra você sempre lembrar de mim 💗</h1>
 
   <div class="slideshow">
-    <div class="slide active" style="background-image:url('fotos/foto1.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto2.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto3.jpeg')"></div>
+    <div class="slide active" style="background-image:url('fotos/foto19.jpeg')"></div>
     <div class="slide" style="background-image:url('fotos/foto4.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto5.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto15.jpeg')"></div>
     <div class="slide" style="background-image:url('fotos/foto7.jpeg')"></div>
     <div class="slide" style="background-image:url('fotos/foto8.jpeg')"></div>
     <div class="slide" style="background-image:url('fotos/foto9.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto10.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto11.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto12.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto23.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto14.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto5.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto16.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto17.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto18.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto1.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto20.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto21.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto22.jpeg')"></div>
+    <div class="slide" style="background-image:url('fotos/foto13.jpeg')"></div>
   </div>
 
   <button class="btn" onclick="start()">Começar 💖</button>
@@ -235,6 +252,9 @@ setInterval(()=>{
 
 <!-- JOGO -->
 <div class="game" id="game">
+ <button class="btn back-btn" onclick="backToPhotos()">
+⬅ Fotos
+</button>
   <div class="grid" id="grid"></div>
 
   <div class="chat-container">
@@ -343,6 +363,20 @@ function finish(){
     Cada caixinha aqui tem um pedacinho do meu carinho por você 💕
   `;
   modal.classList.add('show');
+}
+
+function backToPhotos(){
+
+  document.getElementById("game").style.display="none";
+
+  const intro = document.querySelector(".intro");
+
+  intro.style.display="flex";
+
+  setTimeout(()=>{
+    intro.classList.remove("hide");
+  },10);
+
 }
 </script>
 
