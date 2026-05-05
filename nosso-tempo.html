@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nosso Tempo ❤️</title>
+
+<style>
+
+body{
+font-family: Arial;
+background:#0f0f0f;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+height:100vh;
+flex-direction:column;
+text-align:center;
+}
+
+.contador{
+font-size:60px;
+font-weight:bold;
+color:#ff4d6d;
+margin:20px 0;
+}
+
+.btn{
+margin-top:30px;
+padding:12px 25px;
+border:none;
+border-radius:10px;
+background:#ff4d6d;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1>💖 Nosso tempo juntos</h1>
+
+<p>Estamos juntos há:</p>
+
+<div class="contador" id="contador">
+0 dias
+</div>
+
+<p>
+Cada dia ao seu lado é especial ❤️
+</p>
+
+<button class="btn" onclick="voltar()">
+Voltar
+</button>
+
+<script>
+
+const dataInicio = new Date("2026-04-09")
+
+function atualizar(){
+
+const hoje = new Date()
+
+const diferenca = hoje - dataInicio
+
+const dias = Math.floor(diferenca / (1000*60*60*24))
+
+document.getElementById("contador").innerText = dias + " dias"
+
+}
+
+atualizar()
+
+function voltar(){
+window.location.href = "index.html"
+}
+
+</script>
+
+</body>
+</html>
