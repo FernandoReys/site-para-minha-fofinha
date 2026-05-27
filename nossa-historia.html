@@ -1,0 +1,457 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Nossa História ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+touch-action:manipulation;
+background:linear-gradient(180deg,#cf4e8bb0,#1c1c1c);
+font-family:'Poppins',sans-serif;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+.book{
+position:relative;
+width:95vw;
+max-width:340px;
+height:78vh;
+max-height:540px;
+perspective:2000px;
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.page{
+position:absolute;
+width:100%;
+height:100%;
+background:linear-gradient(135deg,#fffaf5,#f7e7d7);
+transform-origin:left center;
+transition:transform 0.9s ease;
+border-radius:12px;
+padding:20px;
+box-shadow:0 0 25px rgba(0,0,0,0.4);
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+backface-visibility:hidden;
+-webkit-backface-visibility:hidden;
+overflow:hidden;
+color:#222;
+cursor:pointer;
+}
+
+.page::after{
+content:"";
+position:absolute;
+top:0;
+right:0;
+width:15px;
+height:100%;
+background:rgba(0,0,0,0.05);
+border-radius:0 12px 12px 0;
+}
+
+.page.flipped{
+transform:rotateY(-180deg);
+}
+
+.page img{
+width:75%;
+max-width:240px;
+height:auto;
+aspect-ratio:1/1;
+object-fit:cover;
+border-radius:12px;
+margin-bottom:20px;
+box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+.page h1,
+.page h2{
+color:#ff4d6d;
+margin-bottom:15px;
+}
+
+.page p{
+line-height:1.7;
+font-size:15px;
+}
+
+.indicacao{
+position:absolute;
+bottom:15px;
+font-size:12px;
+opacity:0.5;
+}
+
+.voltar{
+position:absolute;
+top:20px;
+left:20px;
+padding:10px 18px;
+border:none;
+border-radius:10px;
+background:#ff4d6d;
+color:white;
+font-size:14px;
+cursor:pointer;
+z-index:9999;
+transition:0.3s;
+}
+
+.voltar:hover{
+transform:scale(1.05);
+background:#ff335c;
+}
+
+audio{
+display:none;
+}
+
+@media(max-width:600px){
+
+body{
+padding:10px;
+}
+
+.book{
+width:100%;
+max-width:320px;
+height:75vh;
+max-height:500px;
+}
+
+.page{
+padding:15px;
+border-radius:10px;
+}
+
+.page img{
+width:85%;
+max-width:220px;
+}
+
+.page h1,
+.page h2{
+font-size:22px;
+}
+
+.page p{
+font-size:13px;
+line-height:1.5;
+}
+
+.indicacao{
+font-size:10px;
+bottom:10px;
+}
+
+.voltar{
+font-size:12px;
+padding:8px 12px;
+}
+
+}
+
+.page h1,
+.page h2{
+font-size:24px;
+}
+
+.page p{
+font-size:14px;
+line-height:1.6;
+}
+
+.voltar{
+top:10px;
+left:10px;
+padding:8px 14px;
+font-size:13px;
+}
+
+.indicacao{
+font-size:11px;
+}
+
+
+
+</style>
+
+</head>
+
+<body>
+
+<button class="voltar" onclick="window.location.href='index.html'">
+← Voltar
+</button>
+
+<audio autoplay loop>
+<source src="musica.mp3" type="audio/mpeg">
+</audio>
+
+<div class="book" id="book">
+
+<!-- PAGINA 1 -->
+<div class="page">
+<h1>Nossa História ❤️</h1>
+<p>
+Um livro sobre nós.
+</p>
+<div class="indicacao">
+Clique no lado direito →
+</div>
+</div>
+
+<!-- PAGINA 2 -->
+<div class="page">
+<img src="fotos/foto9.jpeg">
+<p>
+Tudo começou sem eu imaginar
+o quanto você seria importante.
+</p>
+</div>
+
+<!-- PAGINA 3 -->
+<div class="page">
+<img src="fotos/foto2.jpeg">
+<p>
+Cada conversa foi aproximando a gente.
+</p>
+</div>
+
+<!-- PAGINA 4 -->
+<div class="page">
+<img src="fotos/foto7.jpeg">
+<p>
+E aos poucos você virou meu lugar favorito.
+</p>
+</div>
+
+<!-- PAGINA 5 -->
+<div class="page">
+<img src="fotos/foto6.jpeg">
+<p>
+Nossas primeiras fotos ❤️
+</p>
+</div>
+
+<!-- PAGINA 6 -->
+<div class="page">
+<img src="fotos/foto35.jpeg">
+<p>
+Momentos simples que ficaram enormes.
+</p>
+</div>
+
+<!-- PAGINA 7 -->
+<div class="page">
+<img src="fotos/foto1.jpeg">
+<p>
+Seu sorriso sempre foi meu ponto fraco.
+</p>
+</div>
+
+<!-- PAGINA 8 -->
+<div class="page">
+<img src="fotos/foto8.jpeg">
+<p>
+A gente criando memórias sem perceber.
+</p>
+</div>
+
+<!-- PAGINA 9 -->
+<div class="page">
+<img src="fotos/foto29.jpeg">
+<p>
+Até os momentos bobos ficaram especiais.
+</p>
+</div>
+
+<!-- PAGINA 10 -->
+<div class="page">
+<img src="fotos/foto28.jpeg">
+<p>
+Você virou parte dos meus dias.
+</p>
+</div>
+
+<!-- PAGINA 11 -->
+<div class="page">
+<img src="fotos/foto23.jpeg">
+<p>
+E também dos meus pensamentos.
+</p>
+</div>
+
+<!-- PAGINA 12 -->
+<div class="page">
+<img src="fotos/foto31.jpeg">
+<p>
+Amo cada detalhe nosso.
+</p>
+</div>
+
+<!-- PAGINA 13 -->
+<div class="page">
+<img src="fotos/foto19.jpeg">
+<p>
+Até nossas loucuras fazem sentido juntas.
+</p>
+</div>
+
+<!-- PAGINA 14 -->
+<div class="page">
+<img src="fotos/foto15.jpeg">
+<p>
+Cada abraço parecia casa.
+</p>
+</div>
+
+<!-- PAGINA 15 -->
+<div class="page">
+<img src="fotos/foto28.jpeg">
+<p>
+E cada memória vale ouro pra mim.
+</p>
+</div>
+
+<!-- PAGINA 16 -->
+<div class="page">
+<img src="fotos/foto26.jpeg">
+<p>
+Mesmo nos dias difíceis...
+</p>
+</div>
+
+<!-- PAGINA 17 -->
+<div class="page">
+<img src="fotos/foto29.jpeg">
+<p>
+Eu ainda olho pra você com carinho.
+</p>
+</div>
+
+<!-- PAGINA 18 -->
+<div class="page">
+<img src="fotos/foto18.jpeg">
+<p>
+Porque nossa história importa pra mim.
+</p>
+</div>
+
+<!-- PAGINA 19 -->
+<div class="page">
+<img src="fotos/foto27.jpeg">
+<p>
+E eu ainda quero escrever muitos capítulos.
+</p>
+</div>
+
+<!-- PAGINA 20 -->
+<div class="page">
+<h1>Continua... ❤️</h1>
+<p>
+Talvez a gente ainda esteja aprendendo.
+<br><br>
+Mas entre todas as possibilidades,
+eu ainda escolheria você.
+</p>
+</div>
+
+</div>
+
+<script>const pages = document.querySelectorAll('.page')
+
+let current = 0
+
+// Organiza as páginas
+pages.forEach((page, index) => {
+
+page.style.zIndex = pages.length - index
+
+})
+
+// Clique no celular (SEM DUPLO CLIQUE)
+pages.forEach((page) => {
+
+page.addEventListener('touchstart', (e) => {
+
+const toque = e.touches[0]
+
+const rect = page.getBoundingClientRect()
+
+const cliqueX = toque.clientX - rect.left
+
+const largura = page.clientWidth
+
+// Lado direito = próxima página
+if (cliqueX > largura / 2) {
+
+nextPage()
+
+}
+
+// Lado esquerdo = voltar
+else {
+
+prevPage()
+
+}
+
+})
+
+})
+
+// Próxima página
+function nextPage() {
+
+if (current >= pages.length) return
+
+pages[current].classList.add('flipped')
+
+current++
+
+}
+
+// Página anterior
+function prevPage() {
+
+if (current <= 0) return
+
+current--
+
+pages[current].classList.remove('flipped')
+
+}</script>
+
+</body>
+</html>
+
+
+
+
