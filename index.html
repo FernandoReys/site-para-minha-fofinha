@@ -1,465 +1,1502 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<link rel="shortcut icon" href="fotos/foto11.jpeg" type="image/x-icon">
-<title>Para alegrar o seu dia minha Fofinha!</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#1b0d18">
+  <meta
+    name="description"
+    content="Um cantinho feito com carinho, fotos, mensagens e momentos especiais."
+  >
 
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="fotos/foto11.jpeg" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  >
 
-<style>
-:root{
-  --accent:#d46d9d;
-  --dark:#2b1222;
-}
+  <title>Para alegrar o seu dia, minha Fofinha 💗</title>
 
-html, body{
-overflow-x: hidden;
-max-width: 100%;
-}
+  <style>
+    :root {
+      --rose-50: #fff7fb;
+      --rose-100: #ffe9f3;
+      --rose-200: #ffd0e3;
+      --rose-300: #f7a7ca;
+      --rose-400: #e97aac;
+      --rose-500: #d95192;
+      --rose-600: #bd3677;
+      --plum-700: #6c294f;
+      --plum-800: #40172f;
+      --plum-900: #210d1a;
+      --ink: #2c1d27;
+      --muted: #7f6575;
+      --paper: rgba(255, 255, 255, 0.8);
+      --line: rgba(255, 255, 255, 0.46);
+      --shadow: 0 30px 80px rgba(67, 19, 49, 0.22);
+      --shadow-soft: 0 18px 48px rgba(67, 19, 49, 0.14);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --transition: 220ms ease;
+    }
 
-/* 🌈 FUNDO */
-body{
-  margin:0;
-  min-height:100vh;
-  font-family:'Press Start 2P', monospace;
-  background:
-    radial-gradient(circle at top, #ffe6f2 0%, transparent 45%),
-    linear-gradient(180deg,#f7c1da,#ffd9ec,#fff1f8);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  overflow-x:hidden;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-/* 💗 Corações */
-.heart{
-  position:fixed;
-  bottom:-20px;
-  animation:floatUp linear infinite;
-  opacity:.7;
-  pointer-events:none;
-}
-@keyframes floatUp{
-  to{transform:translateY(-120vh) scale(1.3);opacity:0}
-}
+    html {
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
 
-/* ================= INTRO ================= */
-.intro{
-  position:fixed;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:space-between;
-  padding:40px 20px;
-  text-align:center;
-  z-index:10;
-  background:#000;
-  transition:opacity .8s ease, visibility .8s ease;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      background:
+        radial-gradient(circle at 8% 12%, rgba(255, 255, 255, 0.95), transparent 24rem),
+        radial-gradient(circle at 92% 18%, rgba(255, 194, 222, 0.48), transparent 30rem),
+        radial-gradient(circle at 50% 90%, rgba(217, 81, 146, 0.2), transparent 28rem),
+        linear-gradient(145deg, #fff7fb 0%, #f8dce9 44%, #e8b9d1 100%);
+    }
 
-.intro.hide{
-  opacity:0;
-  visibility:hidden;
-}
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: -2;
+      width: 28rem;
+      height: 28rem;
+      border-radius: 50%;
+      filter: blur(10px);
+      opacity: 0.42;
+      pointer-events: none;
+    }
 
-.intro h1{
-  color:#fff;
-  font-size:13px;
-}
+    body::before {
+      top: -10rem;
+      left: -10rem;
+      background: rgba(255, 255, 255, 0.82);
+    }
 
-/* Slideshow com DIVs */
-.slideshow{
-  width:100%;
-  max-width:420px;
-  aspect-ratio:3/4;
-  border-radius:22px;
-  overflow:hidden;
-  position:relative;
-  box-shadow:0 12px 35px rgba(0,0,0,.5);
-}
+    body::after {
+      right: -12rem;
+      bottom: -12rem;
+      background: rgba(185, 66, 126, 0.28);
+    }
 
-.slide{
-  position:absolute;
-  inset:0;
-  background-size:cover;
-  background-position:center;
-  opacity:0;
-  transition:opacity 1s ease;
-}
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
 
-.slide.active{
-  opacity:1;
-}
-/* ======================================== */
+    button {
+      font: inherit;
+    }
 
-/* Botão */
-.btn{
-  padding:12px 20px;
-  font-size:10px;
-  border-radius:12px;
-  border:4px solid var(--accent);
-  background:linear-gradient(180deg,#ffeff8,#ffd7ee);
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-/* 🎁 Jogo */
-.game{
-  display:none;
-  background:#fff;
-  border:8px solid #ffd1e6;
-  border-radius:20px;
-  padding:20px;
-  max-width:900px;
-  width:95%;
-}
+    .background-orb {
+      position: fixed;
+      z-index: -1;
+      border-radius: 50%;
+      filter: blur(2px);
+      pointer-events: none;
+      animation: orbFloat 11s ease-in-out infinite alternate;
+    }
 
-.back-btn{
-position:fixed;
-top:20px;
-left:20px;
-z-index:20;
-}
+    .background-orb--one {
+      top: 14%;
+      left: 5%;
+      width: 9rem;
+      height: 9rem;
+      background: rgba(255, 255, 255, 0.5);
+    }
 
-#letterText{
-font-size:11px;
-line-height:1.8;
-white-space:pre-line;
-}
+    .background-orb--two {
+      right: 8%;
+      bottom: 18%;
+      width: 13rem;
+      height: 13rem;
+      background: rgba(216, 80, 145, 0.18);
+      animation-delay: -4s;
+    }
 
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
-  gap:16px;
-}
+    @keyframes orbFloat {
+      to {
+        transform: translate3d(18px, -24px, 0) scale(1.08);
+      }
+    }
 
-.gift{aspect-ratio:1/1;}
+    .heart {
+      position: fixed;
+      z-index: 2;
+      bottom: -40px;
+      opacity: 0;
+      pointer-events: none;
+      animation: floatUp linear forwards;
+      filter: drop-shadow(0 8px 10px rgba(171, 48, 108, 0.14));
+    }
 
-.card{
-  width:100%;
-  height:100%;
-  perspective:1000px;
-}
+    @keyframes floatUp {
+      10% {
+        opacity: 0.68;
+      }
 
-.card-inner{
-  width:100%;
-  height:100%;
-  position:relative;
-  transform-style:preserve-3d;
-  transition:transform .6s ease;
-}
+      100% {
+        transform: translate3d(var(--drift), -118vh, 0) rotate(20deg) scale(1.2);
+        opacity: 0;
+      }
+    }
 
-.card.open .card-inner{
-  transform:rotateY(180deg);
-}
+    .intro {
+      position: fixed;
+      z-index: 50;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      min-height: 100svh;
+      padding: 24px;
+      overflow-y: auto;
+      background:
+        linear-gradient(rgba(20, 7, 16, 0.5), rgba(20, 7, 16, 0.74)),
+        url("fotos/foto29.jpeg") center/cover;
+      transition:
+        opacity 700ms ease,
+        visibility 700ms ease,
+        transform 700ms ease;
+    }
 
-.face{
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  backface-visibility:hidden;
-  border-radius:16px;
-  font-size:10px;
-  text-align:center;
-  padding:12px;
-}
+    .intro::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(255, 255, 255, 0.18), transparent 34%),
+        linear-gradient(135deg, rgba(108, 24, 70, 0.16), rgba(12, 6, 10, 0.5));
+      backdrop-filter: blur(8px);
+    }
 
-.front{
-  background:linear-gradient(180deg,#ffbfe0,#ff99d9);
-  border:4px solid var(--accent);
-}
+    .intro.hide {
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(1.025);
+    }
 
-.back{
-  background:#fff6fb;
-  border:4px dashed #ffd1e6;
-  transform:rotateY(180deg);
-  color:#7a3a57;
-}
+    .intro-card {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      width: min(1100px, 100%);
+      grid-template-columns: minmax(0, 0.82fr) minmax(320px, 1.18fr);
+      gap: clamp(24px, 5vw, 70px);
+      align-items: center;
+      padding: clamp(24px, 4vw, 48px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 38px;
+      background: rgba(22, 9, 18, 0.54);
+      box-shadow: 0 40px 100px rgba(12, 5, 10, 0.46);
+      backdrop-filter: blur(26px);
+    }
 
-/* Chat */
-.chat-container{margin-top:24px;text-align:center}
-.chat-box{
-  background:#fff0f8;
-  border:4px solid var(--accent);
-  border-radius:14px;
-  padding:14px;
-  font-size:10px;
-  margin-bottom:10px;
-}
+    .intro-copy {
+      color: white;
+    }
 
-/* Modal */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.3);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  opacity:0;
-  pointer-events:none;
-}
-.modal.show{opacity:1;pointer-events:auto}
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
 
-.modal-card{
-  background:#fff;
-  border:8px solid var(--accent);
-  border-radius:20px;
-  padding:24px;
-  text-align:center;
-  max-width:420px;
-  width:90%;
-}
-#finalText{font-size:11px;line-height:1.8}
-</style>
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .intro h1 {
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.6rem, 6vw, 5.6rem);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+    }
+
+    .intro h1 em {
+      display: block;
+      color: #ffcbe2;
+      font-family: "Great Vibes", cursive;
+      font-size: 1.2em;
+      font-weight: 400;
+      line-height: 1.08;
+    }
+
+    .intro-copy > p:not(.eyebrow) {
+      max-width: 34rem;
+      margin: 24px 0 30px;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .intro-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .slideshow-shell {
+      position: relative;
+      padding: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 34px;
+      background: rgba(255, 255, 255, 0.11);
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.32);
+    }
+
+    .slideshow-shell::before,
+    .slideshow-shell::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      border-radius: 30px;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .slideshow-shell::before {
+      inset: 24px -18px -18px 24px;
+      transform: rotate(4deg);
+    }
+
+    .slideshow-shell::after {
+      inset: -18px 24px 24px -18px;
+      transform: rotate(-3deg);
+    }
+
+    .slideshow {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: 25px;
+      background: #28101f;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      background-position: center;
+      background-size: cover;
+      transform: scale(1.08);
+      transition:
+        opacity 1.2s ease,
+        transform 6s ease;
+    }
+
+    .slide::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(22, 7, 17, 0.42), transparent 48%);
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .photo-caption {
+      position: absolute;
+      z-index: 3;
+      right: 26px;
+      bottom: 22px;
+      left: 26px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      color: white;
+    }
+
+    .photo-caption span {
+      font-family: "Great Vibes", cursive;
+      font-size: 2rem;
+    }
+
+    .photo-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .photo-dots i {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .photo-dots i.is-active {
+      width: 22px;
+      border-radius: 99px;
+      background: white;
+    }
+
+    .btn {
+      position: relative;
+      display: inline-flex;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 22px;
+      overflow: hidden;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition);
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: -60%;
+      left: -25%;
+      width: 25%;
+      height: 220%;
+      background: rgba(255, 255, 255, 0.36);
+      transform: rotate(24deg);
+      transition: left 500ms ease;
+    }
+
+    .btn:hover::before {
+      left: 120%;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn:active {
+      transform: translateY(-1px) scale(0.99);
+    }
+
+    .btn--primary {
+      color: white;
+      background: linear-gradient(135deg, var(--rose-500), var(--rose-600));
+      box-shadow: 0 14px 34px rgba(190, 54, 119, 0.34);
+    }
+
+    .btn--primary:hover {
+      box-shadow: 0 20px 42px rgba(190, 54, 119, 0.42);
+    }
+
+    .btn--glass {
+      color: white;
+      border-color: rgba(255, 255, 255, 0.3);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+    }
+
+    .btn--soft {
+      color: var(--plum-800);
+      border-color: rgba(191, 71, 132, 0.12);
+      background: rgba(255, 255, 255, 0.66);
+      box-shadow: 0 12px 30px rgba(67, 19, 49, 0.12);
+    }
+
+    .page {
+      display: none;
+      min-height: 100svh;
+      padding: clamp(22px, 5vw, 56px);
+    }
+
+    .page.is-visible {
+      display: block;
+      animation: pageEnter 600ms ease both;
+    }
+
+    @keyframes pageEnter {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+    }
+
+    .app-shell {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 28px;
+      padding: 12px 14px 12px 20px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.48);
+      box-shadow: 0 12px 36px rgba(80, 30, 60, 0.1);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 50%;
+      color: white;
+      background: linear-gradient(135deg, var(--rose-400), var(--rose-600));
+      box-shadow: 0 8px 20px rgba(185, 59, 122, 0.28);
+    }
+
+    .brand strong {
+      display: block;
+      color: var(--plum-900);
+      font-family: "Playfair Display", serif;
+      font-size: 1rem;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .topbar-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .icon-btn {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border: 1px solid rgba(105, 37, 74, 0.1);
+      border-radius: 50%;
+      color: var(--plum-800);
+      background: rgba(255, 255, 255, 0.58);
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition);
+    }
+
+    .icon-btn:hover {
+      transform: translateY(-2px);
+      background: white;
+    }
+
+    .game-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--paper);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(24px);
+    }
+
+    .game-intro {
+      display: flex;
+      min-height: 100%;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: clamp(28px, 4vw, 46px);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.82), rgba(255,234,245,.7)),
+        radial-gradient(circle at top right, rgba(221,91,151,.18), transparent 40%);
+    }
+
+    .section-label {
+      display: inline-flex;
+      width: fit-content;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      color: var(--rose-600);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .section-label::before {
+      content: "";
+      width: 30px;
+      height: 2px;
+      border-radius: 99px;
+      background: currentColor;
+    }
+
+    .game-intro h2 {
+      margin: 0;
+      color: var(--plum-900);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.3rem, 5vw, 4.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+    }
+
+    .game-intro h2 span {
+      color: var(--rose-500);
+      font-family: "Great Vibes", cursive;
+      font-size: 1.15em;
+      font-weight: 400;
+    }
+
+    .game-intro p {
+      margin: 22px 0 0;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .progress-wrap {
+      margin-top: 34px;
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .progress {
+      height: 10px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(130, 65, 101, 0.1);
+    }
+
+    .progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--rose-400), var(--rose-600));
+      transition: width 400ms ease;
+    }
+
+    .game-panel {
+      padding: clamp(20px, 3vw, 30px);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .gift {
+      min-height: 150px;
+      perspective: 1200px;
+    }
+
+    .card {
+      width: 100%;
+      height: 100%;
+      min-height: 150px;
+      border: 0;
+      background: transparent;
+      cursor: pointer;
+      perspective: 1100px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      min-height: 150px;
+      transform-style: preserve-3d;
+      transition: transform 700ms cubic-bezier(0.2, 0.74, 0.3, 1);
+    }
+
+    .card.open .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .face {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 18px;
+      overflow: hidden;
+      border-radius: 22px;
+      text-align: center;
+      backface-visibility: hidden;
+      box-shadow: 0 14px 34px rgba(86, 30, 62, 0.12);
+    }
+
+    .front {
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      color: white;
+      background:
+        radial-gradient(circle at 30% 15%, rgba(255,255,255,.36), transparent 30%),
+        linear-gradient(145deg, #f38aba, #ca4b89);
+    }
+
+    .front::before,
+    .front::after {
+      content: "";
+      position: absolute;
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .front::before {
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 20px;
+      transform: translateX(-50%);
+    }
+
+    .front::after {
+      top: 50%;
+      right: 0;
+      left: 0;
+      height: 20px;
+      transform: translateY(-50%);
+    }
+
+    .gift-icon {
+      position: relative;
+      z-index: 2;
+      font-size: 2.7rem;
+      filter: drop-shadow(0 8px 10px rgba(78, 17, 51, 0.18));
+      transition: transform 220ms ease;
+    }
+
+    .card:hover .gift-icon {
+      transform: translateY(-5px) rotate(-4deg) scale(1.06);
+    }
+
+    .back {
+      border: 1px solid rgba(200, 73, 137, 0.2);
+      color: var(--plum-800);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.98), rgba(255,234,244,.98));
+      transform: rotateY(180deg);
+      font-size: 0.9rem;
+      font-weight: 700;
+      line-height: 1.55;
+    }
+
+    .message-panel {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-top: 18px;
+      padding: 18px;
+      border: 1px solid rgba(211, 82, 147, 0.14);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.52);
+    }
+
+    .message-icon {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      border-radius: 15px;
+      background: linear-gradient(145deg, var(--rose-100), white);
+      box-shadow: inset 0 0 0 1px rgba(216, 78, 144, 0.1);
+    }
+
+    .message-panel small {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+    }
+
+    .message-panel strong {
+      color: var(--plum-800);
+      line-height: 1.4;
+    }
+
+    .feature-links {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .feature-link {
+      position: relative;
+      min-height: 156px;
+      overflow: hidden;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(20px);
+      transition:
+        transform var(--transition),
+        box-shadow var(--transition),
+        border-color var(--transition);
+    }
+
+    .feature-link:hover {
+      transform: translateY(-6px);
+      border-color: rgba(199, 70, 135, 0.28);
+      box-shadow: var(--shadow);
+    }
+
+    .feature-link::after {
+      content: "";
+      position: absolute;
+      right: -26px;
+      bottom: -26px;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: rgba(219, 83, 149, 0.1);
+      transition: transform 300ms ease;
+    }
+
+    .feature-link:hover::after {
+      transform: scale(1.25);
+    }
+
+    .feature-link--game {
+      color: white;
+      border-color: rgba(255,255,255,.18);
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,.16), transparent 34%),
+        linear-gradient(135deg, #8f315f, #3e142d);
+    }
+
+    .feature-link--game strong,
+    .feature-link--game small {
+      color: white;
+    }
+
+    .feature-link--game small {
+      color: rgba(255,255,255,.72);
+    }
+
+    .feature-link--game::after {
+      background: rgba(255,255,255,.1);
+    }
+
+    .feature-link span {
+      display: block;
+      margin-bottom: 28px;
+      font-size: 1.8rem;
+    }
+
+    .feature-link strong {
+      display: block;
+      color: var(--plum-900);
+      font-family: "Playfair Display", serif;
+      font-size: 1.25rem;
+    }
+
+    .feature-link small {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .modal {
+      position: fixed;
+      z-index: 100;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      background: rgba(30, 11, 24, 0.55);
+      backdrop-filter: blur(14px);
+      transition: opacity var(--transition), visibility var(--transition);
+    }
+
+    .modal.show {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      position: relative;
+      width: min(520px, 100%);
+      max-height: min(760px, 88svh);
+      overflow-y: auto;
+      padding: clamp(24px, 5vw, 42px);
+      border: 1px solid rgba(255,255,255,.6);
+      border-radius: 30px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.96), rgba(255,238,246,.96));
+      box-shadow: 0 36px 100px rgba(36, 9, 27, 0.38);
+      transform: translateY(18px) scale(0.97);
+      transition: transform 300ms ease;
+    }
+
+    .modal.show .modal-card {
+      transform: none;
+    }
+
+    .modal-close {
+      position: sticky;
+      z-index: 2;
+      top: 0;
+      display: grid;
+      width: 42px;
+      height: 42px;
+      margin-left: auto;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      color: var(--plum-800);
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: 0 8px 22px rgba(80, 27, 57, 0.12);
+      cursor: pointer;
+    }
+
+    .modal-kicker {
+      color: var(--rose-600);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .modal-card h2 {
+      margin: 14px 0 18px;
+      color: var(--plum-900);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      line-height: 1;
+    }
+
+    .modal-card p {
+      color: var(--muted);
+      line-height: 1.78;
+    }
+
+    #letterText {
+      white-space: pre-line;
+    }
+
+    .spotify {
+      width: 100%;
+      margin-top: 20px;
+      border: 0;
+      border-radius: 18px;
+    }
+
+    .confetti {
+      position: fixed;
+      z-index: 120;
+      top: -20px;
+      width: 10px;
+      height: 16px;
+      border-radius: 3px;
+      pointer-events: none;
+      animation: confettiFall 2.4s ease-in forwards;
+    }
+
+    @keyframes confettiFall {
+      to {
+        transform: translate3d(var(--x), 110vh, 0) rotate(760deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 840px) {
+      .intro-card,
+      .game-hero {
+        grid-template-columns: 1fr;
+      }
+
+      .intro-copy {
+        text-align: center;
+      }
+
+      .intro-copy > p:not(.eyebrow) {
+        margin-inline: auto;
+      }
+
+      .eyebrow {
+        justify-content: center;
+      }
+
+      .intro-actions {
+        justify-content: center;
+      }
+
+      .slideshow-shell {
+        width: min(480px, 100%);
+        margin: 0 auto;
+      }
+
+      .feature-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .intro {
+        align-items: start;
+        padding: 12px;
+      }
+
+      .intro-card {
+        margin: auto;
+        padding: 20px;
+        border-radius: 28px;
+      }
+
+      .intro h1 {
+        font-size: clamp(2.4rem, 12vw, 4.2rem);
+      }
+
+      .intro-copy > p:not(.eyebrow) {
+        margin-block: 18px 22px;
+        font-size: 0.9rem;
+      }
+
+      .slideshow-shell {
+        padding: 8px;
+        border-radius: 26px;
+      }
+
+      .slideshow {
+        border-radius: 20px;
+      }
+
+      .page {
+        padding: 14px;
+      }
+
+      .topbar {
+        border-radius: 24px;
+      }
+
+      .brand small {
+        display: none;
+      }
+
+      .game-intro,
+      .game-panel {
+        padding: 22px;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .gift,
+      .card,
+      .card-inner {
+        min-height: 130px;
+      }
+
+      .feature-link {
+        min-height: 138px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <div class="background-orb background-orb--one"></div>
+  <div class="background-orb background-orb--two"></div>
 
-<script>
-/* 💗 Corações */
-const hearts=['💗','💖','💕'];
-setInterval(()=>{
-  const h=document.createElement('div');
-  h.className='heart';
-  h.textContent=hearts[Math.floor(Math.random()*hearts.length)];
-  h.style.left=Math.random()*100+'vw';
-  h.style.fontSize=(14+Math.random()*18)+'px';
-  h.style.animationDuration=(4+Math.random()*3)+'s';
-  document.body.appendChild(h);
-  setTimeout(()=>h.remove(),7000);
-},900);
-</script>
+  <section class="intro" aria-label="Apresentação">
+    <div class="intro-card">
+      <div class="intro-copy">
+        <p class="eyebrow">Um cantinho só nosso</p>
+        <h1>
+          Para alegrar
+          <em>o seu dia</em>
+        </h1>
 
-<!-- INTRO -->
-<div class="intro">
-  <h1>Bem-vinda Amor! Pra você sempre lembrar de mim 💗</h1>
+        <p>
+          Fiz este espaço para guardar fotos, mensagens e pequenos detalhes
+          que sempre me fazem lembrar de você.
+        </p>
 
-  <div class="slideshow">
-    <div class="slide active" style="background-image:url('fotos/foto29.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto4.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto15.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto7.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto8.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto9.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto11.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto12.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto23.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto14.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto5.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto16.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto17.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto18.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto1.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto20.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto21.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto22.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto13.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto24.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto25.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto26.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto27.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto28.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto19.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto30.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto31.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto32.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto34.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto35.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto36.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto37.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto38.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto39.jpeg')"></div>
-    <div class="slide" style="background-image:url('fotos/foto40.jpeg')"></div>
-  </div>
+        <div class="intro-actions">
+          <button class="btn btn--primary" type="button" onclick="start()">
+            Começar nossa surpresa 💖
+          </button>
 
-  <button class="btn" onclick="start()">Começar 💖</button>
-</div>
+          <button class="btn btn--glass" type="button" onclick="openLetter()">
+            Abrir minha carta
+          </button>
+        </div>
+      </div>
 
-<!-- JOGO -->
-<div class="game" id="game">
- <button class="btn back-btn" onclick="backToPhotos()">
-⬅ Fotos
-</button>
-  <div class="grid" id="grid"></div>
+      <div class="slideshow-shell">
+        <div class="slideshow" aria-label="Nossas fotos">
+          <div class="slide active" style="background-image:url('fotos/foto29.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto4.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto15.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto7.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto8.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto9.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto11.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto12.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto23.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto14.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto5.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto16.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto17.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto18.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto1.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto20.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto21.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto22.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto13.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto24.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto25.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto26.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto27.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto28.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto19.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto30.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto31.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto32.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto34.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto35.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto36.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto37.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto38.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto39.jpeg')"></div>
+          <div class="slide" style="background-image:url('fotos/foto40.jpeg')"></div>
 
-  <div class="chat-container">
-    <div class="chat-box" id="chatBox">
-      Clique em uma caixinha 💌
+          <div class="photo-caption">
+            <span>Nós dois</span>
+            <div class="photo-dots" aria-hidden="true">
+              <i class="is-active"></i>
+              <i></i>
+              <i></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="page" id="game">
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">💗</span>
+          <div>
+            <strong>Para minha fofinha</strong>
+            <small>Um espaço feito com carinho</small>
+          </div>
+        </div>
+
+        <div class="topbar-actions">
+          <button
+            class="icon-btn"
+            type="button"
+            title="Voltar para as fotos"
+            onclick="backToPhotos()"
+          >
+            🖼️
+          </button>
+
+          <button
+            class="icon-btn"
+            type="button"
+            title="Abrir carta"
+            onclick="openLetter()"
+          >
+            💌
+          </button>
+        </div>
+      </header>
+
+      <section class="game-hero">
+        <article class="panel game-intro">
+          <div>
+            <span class="section-label">Uma surpresa por vez</span>
+
+            <h2>
+              Abra cada
+              <span>caixinha</span>
+            </h2>
+
+            <p>
+              Cada presente guarda uma mensagem especial. Abra todos e descubra
+              o recado final que preparei para você.
+            </p>
+          </div>
+
+          <div class="progress-wrap">
+            <div class="progress-meta">
+              <span>Presentes abertos</span>
+              <strong id="progressText">0 de 9</strong>
+            </div>
+
+            <div class="progress" aria-hidden="true">
+              <span id="progressBar"></span>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel game-panel">
+          <div class="grid" id="grid"></div>
+
+          <div class="message-panel">
+            <span class="message-icon">💌</span>
+            <div>
+              <small>Mensagem atual</small>
+              <strong id="chatBox">Clique em uma caixinha para começar.</strong>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <nav class="feature-links" aria-label="Outras páginas">
+        <button class="feature-link" type="button" onclick="openLetter()">
+          <span>💌</span>
+          <strong>Abrir carta</strong>
+          <small>Uma mensagem que escrevi especialmente para você.</small>
+        </button>
+
+        <a class="feature-link" href="nosso-tempo.html">
+          <span>⏳</span>
+          <strong>Nosso tempo juntos</strong>
+          <small>Veja quanto tempo já faz parte da nossa história.</small>
+        </a>
+
+        <a class="feature-link" href="nossa-historia.html">
+          <span>📖</span>
+          <strong>Nossa história</strong>
+          <small>Um livro com capítulos, fotos e memórias nossas.</small>
+        </a>
+
+        <a class="feature-link feature-link--game" href="em-busca-da-fofinha.html">
+          <span>🎮</span>
+          <strong>Em Busca da Fofinha</strong>
+          <small>Uma pequena aventura mobile feita especialmente para você.</small>
+        </a>
+      </nav>
+    </div>
+  </main>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Mensagem final">
+    <div class="modal-card">
+      <button
+        class="modal-close"
+        type="button"
+        aria-label="Fechar"
+        onclick="closeModal('modal')"
+      >
+        ×
+      </button>
+
+      <span class="modal-kicker">Você abriu tudo</span>
+      <h2>Uma última mensagem 💗</h2>
+      <p id="finalText"></p>
+
+      <iframe
+        class="spotify"
+        src="https://open.spotify.com/embed/track/7evftBiobEwWOwfxiTnnKc"
+        height="152"
+        title="Nossa música no Spotify"
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+      ></iframe>
+
+      <button
+        class="btn btn--primary"
+        type="button"
+        style="margin-top:20px;width:100%"
+        onclick="closeModal('modal')"
+      >
+        Enviar um abraço 💞
+      </button>
     </div>
   </div>
-</div>
 
-<!-- MODAL -->
-<div class="modal" id="modal">
-  <div class="modal-card">
-    <p id="finalText"></p>
+  <div class="modal" id="letterModal" role="dialog" aria-modal="true" aria-label="Carta">
+    <div class="modal-card">
+      <button
+        class="modal-close"
+        type="button"
+        aria-label="Fechar carta"
+        onclick="closeLetter()"
+      >
+        ×
+      </button>
 
-    <iframe style="border-radius:12px"
-      src="https://open.spotify.com/embed/track/7evftBiobEwWOwfxiTnnKc"
-      width="100%" height="152" frameborder="0"
-      allow="autoplay; encrypted-media">
-    </iframe>
+      <span class="modal-kicker">Escrevi para você</span>
+      <h2>Para minha fofinha 💌</h2>
 
-    <button class="btn" onclick="modal.classList.remove('show')" style="margin-top:14px">
-      Enviar abraço
-    </button>
-  </div>
-</div>
+      <p id="letterText">Amor, hoje eu sou uma pessoa melhor por você e por nós.
 
-<button class="btn" onclick="openLetter()">
-💌 Abrir carta
-</button>
-<div class="modal" id="letterModal">
-
-  <div class="modal-card">
-
-    <h2>💌 Para minha fofinha</h2>
-
-    <p id="letterText">
-Amor, hoje eu sou uma pessoa melhor por você e por nós.
-
-Te amo muito e te desejo todos os dias.  
+Te amo muito e te desejo todos os dias.
 Estou com saudades dos nossos abraços fortes e carinhosos.
 
 Sinto falta do seu cheiro e do seu beijo quando estou longe de você.
 
-Te amo muito minha fofinha, estou com saudades.
+Te amo muito, minha fofinha. Estou com saudades.
 
-Fim de semana chega logo!!!!!
+Fim de semana, chega logo!
 
-Beijos amor da minha vida.  
-Lembra de mim! 💗
-    </p>
+Beijos, amor da minha vida.
+Lembra de mim! 💗</p>
 
-    <button class="btn" onclick="closeLetter()">
-Fechar
-    </button>
-
+      <button
+        class="btn btn--primary"
+        type="button"
+        style="margin-top:18px;width:100%"
+        onclick="closeLetter()"
+      >
+        Guardar esta carta
+      </button>
+    </div>
   </div>
 
-</div>
+  <script>
+    const hearts = ["💗", "💖", "💕", "♡"];
+    const slides = [...document.querySelectorAll(".slide")];
+    const photoDots = [...document.querySelectorAll(".photo-dots i")];
+    const totalGifts = 9;
 
-<script>
-/* Slideshow */
-const slides=document.querySelectorAll('.slide');
-let slideIndex=0;
+    let slideIndex = 0;
+    let opened = 0;
 
-setInterval(()=>{
-  slides[slideIndex].classList.remove('active');
-  slideIndex=(slideIndex+1)%slides.length;
-  slides[slideIndex].classList.add('active');
-},4000);
+    const compliments = [
+      "Você é a minha fofinha favorita. 💗",
+      "Seu sorriso é o meu lugar favorito. 😍",
+      "Você é a dona do meu coração. 💕",
+      "Meu pensamento bom do dia sempre é você. 💖",
+      "Eu te amo muito, amorzinho.",
+      "Quero você por perto em todos os momentos.",
+      "Eu amo esse seu jeitinho de ser.",
+      "Sinto muito a sua falta quando você está longe.",
+      "Eu escolheria você todos os dias. ✨"
+    ];
 
-/* Jogo */
-const TOTAL=9;
-let opened=0;
+    function createHeart() {
+      const heart = document.createElement("span");
+      heart.className = "heart";
+      heart.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+      heart.style.left = `${Math.random() * 100}vw`;
+      heart.style.fontSize = `${14 + Math.random() * 18}px`;
+      heart.style.animationDuration = `${5 + Math.random() * 3}s`;
+      heart.style.setProperty("--drift", `${-50 + Math.random() * 100}px`);
 
-const elogios=[
-  'Você é minha fofinha! 💗',
-  'Seu sorriso é meu lugar favorito 😍',
-  'Dona do Meu Coração 💕',
-  'Meu pensamento bom do dia é você 💖',
-  'te amo muito amorzinho',
-  'Quero você toda hora!',
-  'Amo esse seu jeitinho de ser!',
-  'sinto sua falta amor!',
-  'Desejo vc todos os dias!!',
-];
+      document.body.appendChild(heart);
+      window.setTimeout(() => heart.remove(), 8500);
+    }
 
-function start(){
-  const intro=document.querySelector('.intro');
-  intro.classList.add('hide');
+    window.setInterval(createHeart, 900);
 
-  setTimeout(()=>{
-    intro.style.display='none';
-    document.getElementById('game').style.display='block';
-    init();
-  },800);
-}
+    window.setInterval(() => {
+      slides[slideIndex].classList.remove("active");
+      slideIndex = (slideIndex + 1) % slides.length;
+      slides[slideIndex].classList.add("active");
 
-function init(){
-  const grid=document.getElementById('grid');
-  grid.innerHTML='';
-  opened=0;
+      photoDots.forEach((dot, index) => {
+        dot.classList.toggle(
+          "is-active",
+          index === slideIndex % photoDots.length
+        );
+      });
+    }, 4300);
 
-  for(let i=0;i<TOTAL;i++){
-    const gift=document.createElement('div');
-    gift.className='gift';
+    function start() {
+      const intro = document.querySelector(".intro");
+      const game = document.getElementById("game");
 
-    const card=document.createElement('div');
-    card.className='card';
+      intro.classList.add("hide");
 
-    const inner=document.createElement('div');
-    inner.className='card-inner';
+      window.setTimeout(() => {
+        intro.style.display = "none";
+        game.classList.add("is-visible");
+        init();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }, 700);
+    }
 
-    const front=document.createElement('div');
-    front.className='face front';
-    front.textContent='🎁';
+    function backToPhotos() {
+      const intro = document.querySelector(".intro");
+      const game = document.getElementById("game");
 
-    const back=document.createElement('div');
-    back.className='face back';
+      game.classList.remove("is-visible");
+      intro.style.display = "grid";
 
-    inner.append(front,back);
-    card.append(inner);
-    gift.append(card);
-    grid.append(gift);
+      window.setTimeout(() => {
+        intro.classList.remove("hide");
+      }, 20);
+    }
 
-    card.onclick=()=>{
-      if(card.classList.contains('open'))return;
-      card.classList.add('open');
-      const text=elogios[Math.floor(Math.random()*elogios.length)];
-      back.textContent=text;
-      chatBox.textContent=text;
-      opened++;
-      if(opened===TOTAL)finish();
-    };
-  }
-}
+    function init() {
+      const grid = document.getElementById("grid");
+      grid.innerHTML = "";
+      opened = 0;
+      updateProgress();
 
-function finish(){
-  finalText.innerHTML=`
-    💗<br><br>
-    Para você sempre lembrar de mim, fofinha!<br>
-    Cada caixinha aqui tem um pedacinho do meu carinho por você 💕
-  `;
-  modal.classList.add('show');
-}
+      compliments.forEach((message, index) => {
+        const gift = document.createElement("div");
+        gift.className = "gift";
 
-function backToPhotos(){
+        const card = document.createElement("button");
+        card.className = "card";
+        card.type = "button";
+        card.setAttribute("aria-label", `Abrir presente ${index + 1}`);
 
-  document.getElementById("game").style.display="none";
+        const inner = document.createElement("span");
+        inner.className = "card-inner";
 
-  const intro = document.querySelector(".intro");
+        const front = document.createElement("span");
+        front.className = "face front";
+        front.innerHTML = '<span class="gift-icon">🎁</span>';
 
-  intro.style.display="flex";
+        const back = document.createElement("span");
+        back.className = "face back";
+        back.textContent = message;
 
-  setTimeout(()=>{
-    intro.classList.remove("hide");
-  },10);
+        inner.append(front, back);
+        card.append(inner);
+        gift.append(card);
+        grid.append(gift);
 
-}
+        card.addEventListener("click", () => {
+          if (card.classList.contains("open")) return;
 
-function openLetter(){
-  document.getElementById("letterModal").classList.add("show")
-}
+          card.classList.add("open");
+          document.getElementById("chatBox").textContent = message;
 
-function closeLetter(){
-  document.getElementById("letterModal").classList.remove("show")
-}
-</script>
-<a href="nosso-tempo.html">
-<button class="btn">
-💖 Nosso tempo juntos
-</button>
-</a>
+          opened += 1;
+          updateProgress();
 
-<a href="nossa-historia.html">
-  <button class="btn" onclick="window.location.href='historia.html'">
-Nossa História 📖
-</button>
-</a>
+          if ("vibrate" in navigator) {
+            navigator.vibrate(35);
+          }
+
+          if (opened === totalGifts) {
+            window.setTimeout(finish, 650);
+          }
+        });
+      });
+    }
+
+    function updateProgress() {
+      document.getElementById("progressText").textContent =
+        `${opened} de ${totalGifts}`;
+
+      document.getElementById("progressBar").style.width =
+        `${(opened / totalGifts) * 100}%`;
+    }
+
+    function finish() {
+      document.getElementById("finalText").innerHTML = `
+        Para você sempre lembrar de mim, fofinha.<br><br>
+        Cada caixinha deste cantinho guarda um pedacinho do meu carinho,
+        das minhas saudades e da vontade de viver muitos momentos ao seu lado.
+        <br><br>
+        Você é muito especial para mim. 💕
+      `;
+
+      document.getElementById("modal").classList.add("show");
+      createConfetti();
+    }
+
+    function createConfetti() {
+      const colors = ["#d95192", "#f5a6c7", "#ffd2e5", "#ffffff", "#8f315f"];
+
+      for (let index = 0; index < 70; index += 1) {
+        const piece = document.createElement("i");
+        piece.className = "confetti";
+        piece.style.left = `${Math.random() * 100}vw`;
+        piece.style.background = colors[Math.floor(Math.random() * colors.length)];
+        piece.style.animationDelay = `${Math.random() * 0.7}s`;
+        piece.style.setProperty("--x", `${-120 + Math.random() * 240}px`);
+
+        document.body.appendChild(piece);
+        window.setTimeout(() => piece.remove(), 3400);
+      }
+    }
+
+    function openLetter() {
+      document.getElementById("letterModal").classList.add("show");
+    }
+
+    function closeLetter() {
+      closeModal("letterModal");
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove("show");
+    }
+
+    document.querySelectorAll(".modal").forEach((modal) => {
+      modal.addEventListener("mousedown", (event) => {
+        if (event.target === modal) {
+          modal.classList.remove("show");
+        }
+      });
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        document.querySelectorAll(".modal.show").forEach((modal) => {
+          modal.classList.remove("show");
+        });
+      }
+    });
+  </script>
 </body>
 </html>

@@ -1,457 +1,1020 @@
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#2a1022">
+  <meta
+    name="description"
+    content="Nossa história em capítulos, fotos e memórias especiais."
+  >
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet"
+  >
 
-<title>Nossa História ❤️</title>
+  <title>Nossa História ❤️</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --rose-50: #fff8fb;
+      --rose-100: #ffeaf3;
+      --rose-200: #ffd0e0;
+      --rose-400: #e97aa8;
+      --rose-500: #d8528d;
+      --rose-600: #b83a73;
+      --plum-800: #46172f;
+      --plum-900: #260d1c;
+      --paper: #fffaf6;
+      --paper-dark: #f4e5da;
+      --ink: #32232b;
+      --muted: #7a6671;
+      --line: rgba(117, 64, 91, 0.14);
+      --shadow: 0 32px 90px rgba(39, 10, 28, 0.36);
+      --radius: 28px;
+    }
 
-<style>
+    * {
+      box-sizing: border-box;
+    }
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-}
+    html,
+    body {
+      width: 100%;
+      min-height: 100%;
+      overflow-x: hidden;
+    }
 
-body{
-touch-action:manipulation;
-background:linear-gradient(180deg,#cf4e8bb0,#1c1c1c);
-font-family:'Poppins',sans-serif;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
-}
+    body {
+      margin: 0;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(255,255,255,.62), transparent 25rem),
+        radial-gradient(circle at 85% 15%, rgba(238,145,186,.22), transparent 28rem),
+        linear-gradient(145deg, #4a1836 0%, #2a1022 48%, #170912 100%);
+      touch-action: manipulation;
+    }
 
-.book{
-position:relative;
-width:95vw;
-max-width:340px;
-height:78vh;
-max-height:540px;
-perspective:2000px;
-display:flex;
-align-items:center;
-justify-content:center;
-}
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: -1;
+      border-radius: 50%;
+      pointer-events: none;
+      filter: blur(2px);
+      animation: floatOrb 12s ease-in-out infinite alternate;
+    }
 
-.page{
-position:absolute;
-width:100%;
-height:100%;
-background:linear-gradient(135deg,#fffaf5,#f7e7d7);
-transform-origin:left center;
-transition:transform 0.9s ease;
-border-radius:12px;
-padding:20px;
-box-shadow:0 0 25px rgba(0,0,0,0.4);
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-text-align:center;
-backface-visibility:hidden;
--webkit-backface-visibility:hidden;
-overflow:hidden;
-color:#222;
-cursor:pointer;
-}
+    body::before {
+      top: -8rem;
+      left: -8rem;
+      width: 24rem;
+      height: 24rem;
+      background: rgba(255,255,255,.08);
+    }
 
-.page::after{
-content:"";
-position:absolute;
-top:0;
-right:0;
-width:15px;
-height:100%;
-background:rgba(0,0,0,0.05);
-border-radius:0 12px 12px 0;
-}
+    body::after {
+      right: -10rem;
+      bottom: -10rem;
+      width: 28rem;
+      height: 28rem;
+      background: rgba(216,82,141,.15);
+      animation-delay: -4s;
+    }
 
-.page.flipped{
-transform:rotateY(-180deg);
-}
+    @keyframes floatOrb {
+      to {
+        transform: translate3d(22px, -26px, 0) scale(1.08);
+      }
+    }
 
-.page img{
-width:75%;
-max-width:240px;
-height:auto;
-aspect-ratio:1/1;
-object-fit:cover;
-border-radius:12px;
-margin-bottom:20px;
-box-shadow:0 0 20px rgba(0,0,0,0.3);
-}
+    button {
+      font: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-.page h1,
-.page h2{
-color:#ff4d6d;
-margin-bottom:15px;
-}
+    .topbar {
+      position: fixed;
+      z-index: 9999;
+      top: 18px;
+      left: 50%;
+      display: flex;
+      width: min(980px, calc(100% - 28px));
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 14px 12px 18px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      background: rgba(27, 10, 21, 0.6);
+      box-shadow: 0 16px 48px rgba(0,0,0,.26);
+      backdrop-filter: blur(18px);
+      transform: translateX(-50%);
+    }
 
-.page p{
-line-height:1.7;
-font-size:15px;
-}
+    .topbar__title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      color: white;
+    }
 
-.indicacao{
-position:absolute;
-bottom:15px;
-font-size:12px;
-opacity:0.5;
-}
+    .topbar__title span {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      flex: 0 0 auto;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--rose-400), var(--rose-600));
+      box-shadow: 0 10px 26px rgba(216,82,141,.32);
+    }
 
-.voltar{
-position:absolute;
-top:20px;
-left:20px;
-padding:10px 18px;
-border:none;
-border-radius:10px;
-background:#ff4d6d;
-color:white;
-font-size:14px;
-cursor:pointer;
-z-index:9999;
-transition:0.3s;
-}
+    .topbar__title div {
+      min-width: 0;
+    }
 
-.voltar:hover{
-transform:scale(1.05);
-background:#ff335c;
-}
+    .topbar__title strong {
+      display: block;
+      overflow: hidden;
+      font-family: "Playfair Display", serif;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
 
-audio{
-display:none;
-}
+    .topbar__title small {
+      display: block;
+      overflow: hidden;
+      color: rgba(255,255,255,.62);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
 
-@media(max-width:600px){
+    .topbar__actions {
+      display: flex;
+      gap: 8px;
+    }
 
-body{
-padding:10px;
-}
+    .icon-btn,
+    .back-btn {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      color: white;
+      background: rgba(255,255,255,.08);
+      cursor: pointer;
+      transition:
+        transform 180ms ease,
+        background 180ms ease,
+        border-color 180ms ease;
+    }
 
-.book{
-width:100%;
-max-width:320px;
-height:75vh;
-max-height:500px;
-}
+    .icon-btn {
+      width: 44px;
+      padding: 0;
+    }
 
-.page{
-padding:15px;
-border-radius:10px;
-}
+    .back-btn {
+      padding: 0 16px;
+    }
 
-.page img{
-width:85%;
-max-width:220px;
-}
+    .icon-btn:hover,
+    .back-btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.34);
+      background: rgba(255,255,255,.15);
+    }
 
-.page h1,
-.page h2{
-font-size:22px;
-}
+    .stage {
+      width: min(1100px, 100%);
+      margin-top: 72px;
+      text-align: center;
+    }
 
-.page p{
-font-size:13px;
-line-height:1.5;
-}
+    .book-shell {
+      position: relative;
+      display: grid;
+      min-height: 74svh;
+      place-items: center;
+    }
 
-.indicacao{
-font-size:10px;
-bottom:10px;
-}
+    .book-shell::before {
+      content: "";
+      position: absolute;
+      width: min(500px, 86vw);
+      height: min(640px, 72svh);
+      border-radius: 34px;
+      background: rgba(255,255,255,.04);
+      box-shadow: 0 40px 100px rgba(0,0,0,.26);
+      transform: rotate(-3deg);
+    }
 
-.voltar{
-font-size:12px;
-padding:8px 12px;
-}
+    .book {
+      position: relative;
+      width: min(440px, 90vw);
+      height: min(650px, 76svh);
+      perspective: 2600px;
+      transform-style: preserve-3d;
+    }
 
-}
+    .book::before {
+      content: "";
+      position: absolute;
+      z-index: -2;
+      inset: 12px -12px -14px 12px;
+      border-radius: 28px;
+      background: #3a1029;
+      box-shadow: var(--shadow);
+      transform: rotate(2deg);
+    }
 
-.page h1,
-.page h2{
-font-size:24px;
-}
+    .book::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      top: 18px;
+      bottom: 18px;
+      left: -8px;
+      width: 14px;
+      border-radius: 14px 0 0 14px;
+      background:
+        linear-gradient(90deg, #5a1d42, #311021 60%, #160810);
+      box-shadow: -8px 0 24px rgba(0,0,0,.28);
+    }
 
-.page p{
-font-size:14px;
-line-height:1.6;
-}
+    .page {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(22px, 5vw, 38px);
+      overflow: hidden;
+      border: 1px solid rgba(96, 54, 74, 0.12);
+      border-radius: 22px;
+      color: var(--ink);
+      text-align: center;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.96), rgba(248,232,221,.98));
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,.7),
+        0 22px 62px rgba(24, 7, 17, .24);
+      transform-origin: left center;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transition: transform 850ms cubic-bezier(.2,.72,.25,1);
+      cursor: pointer;
+      user-select: none;
+    }
 
-.voltar{
-top:10px;
-left:10px;
-padding:8px 14px;
-font-size:13px;
-}
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(63,20,43,.08), transparent 8%, transparent 92%, rgba(63,20,43,.06));
+    }
 
-.indicacao{
-font-size:11px;
-}
+    .page::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 20px;
+      height: 100%;
+      pointer-events: none;
+      background: linear-gradient(90deg, transparent, rgba(68,30,49,.08));
+    }
 
+    .page.flipped {
+      transform: rotateY(-180deg);
+    }
 
+    .page-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      width: 100%;
+      place-items: center;
+    }
 
-</style>
+    .page-number {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      color: rgba(73,41,57,.38);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
 
+    .page-photo {
+      position: relative;
+      width: min(82%, 310px);
+      margin-bottom: 24px;
+    }
+
+    .page-photo::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 10px -10px -10px 10px;
+      border-radius: 22px;
+      background: rgba(215,83,141,.14);
+      transform: rotate(3deg);
+    }
+
+    .page img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border: 8px solid white;
+      border-radius: 20px;
+      box-shadow: 0 22px 46px rgba(53,18,38,.24);
+    }
+
+    .page h1,
+    .page h2 {
+      margin: 0;
+      color: var(--plum-900);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.2rem, 7vw, 3.8rem);
+      line-height: 1;
+      letter-spacing: -.035em;
+    }
+
+    .page h1 span,
+    .page h2 span {
+      display: block;
+      margin-top: 8px;
+      color: var(--rose-500);
+      font-family: "Great Vibes", cursive;
+      font-size: 1.22em;
+      font-weight: 400;
+      line-height: 1;
+    }
+
+    .page p {
+      max-width: 31rem;
+      margin: 18px 0 0;
+      color: #594651;
+      font-size: clamp(.95rem, 2.4vw, 1.06rem);
+      line-height: 1.8;
+    }
+
+    .cover {
+      color: white;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(255,255,255,.18), transparent 30%),
+        linear-gradient(145deg, #7b285a, #47152f 52%, #240c1c);
+    }
+
+    .cover::before {
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.18), transparent 11%, transparent 90%, rgba(255,255,255,.04));
+    }
+
+    .cover h1,
+    .cover p {
+      color: white;
+    }
+
+    .cover p {
+      color: rgba(255,255,255,.74);
+    }
+
+    .cover-mark {
+      display: grid;
+      width: 90px;
+      height: 90px;
+      margin-bottom: 24px;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.24);
+      border-radius: 50%;
+      font-size: 2.4rem;
+      background: rgba(255,255,255,.1);
+      box-shadow: inset 0 0 30px rgba(255,255,255,.06);
+    }
+
+    .instruction {
+      position: absolute;
+      right: 20px;
+      bottom: 18px;
+      left: 20px;
+      color: rgba(255,255,255,.55);
+      font-size: .74rem;
+    }
+
+    .final-page {
+      background:
+        radial-gradient(circle at center 20%, rgba(255,255,255,.9), transparent 36%),
+        linear-gradient(145deg, #fff7fb, #f7dbe8);
+    }
+
+    .final-heart {
+      margin-bottom: 20px;
+      font-size: 4rem;
+      animation: heartbeat 1.8s ease-in-out infinite;
+    }
+
+    @keyframes heartbeat {
+      50% {
+        transform: scale(1.08);
+      }
+    }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .control-btn {
+      display: inline-flex;
+      min-width: 132px;
+      min-height: 50px;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 999px;
+      color: white;
+      background: rgba(255,255,255,.09);
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      transition:
+        transform 180ms ease,
+        background 180ms ease,
+        opacity 180ms ease;
+    }
+
+    .control-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,.15);
+    }
+
+    .control-btn:disabled {
+      opacity: .35;
+      cursor: not-allowed;
+    }
+
+    .counter {
+      min-width: 92px;
+      color: rgba(255,255,255,.72);
+      font-size: .85rem;
+      font-weight: 700;
+    }
+
+    .progress {
+      width: min(440px, 90vw);
+      height: 7px;
+      margin: 18px auto 0;
+      overflow: hidden;
+      border-radius: 999px;
+      background: rgba(255,255,255,.1);
+    }
+
+    .progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--rose-400), #ffd8e8);
+      transition: width 400ms ease;
+    }
+
+    .helper {
+      margin-top: 12px;
+      color: rgba(255,255,255,.56);
+      font-size: .78rem;
+    }
+
+    audio {
+      display: none;
+    }
+
+    @media (max-width: 620px) {
+      body {
+        padding: 12px;
+      }
+
+      .topbar {
+        top: 10px;
+        width: calc(100% - 20px);
+      }
+
+      .topbar__title small {
+        display: none;
+      }
+
+      .back-btn {
+        width: 44px;
+        padding: 0;
+        font-size: 0;
+      }
+
+      .back-btn::before {
+        content: "←";
+        font-size: 1rem;
+      }
+
+      .stage {
+        margin-top: 64px;
+      }
+
+      .book-shell {
+        min-height: 70svh;
+      }
+
+      .book {
+        width: min(360px, 92vw);
+        height: min(560px, 70svh);
+      }
+
+      .page {
+        padding: 20px;
+        border-radius: 18px;
+      }
+
+      .page img {
+        border-width: 6px;
+      }
+
+      .controls {
+        gap: 8px;
+      }
+
+      .control-btn {
+        min-width: 0;
+        flex: 1;
+      }
+
+      .counter {
+        min-width: 70px;
+      }
+    }
+
+    @media (max-height: 680px) {
+      .book {
+        height: 68svh;
+      }
+
+      .page-photo {
+        width: min(66%, 250px);
+        margin-bottom: 14px;
+      }
+
+      .page p {
+        margin-top: 12px;
+        line-height: 1.55;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <header class="topbar">
+    <div class="topbar__title">
+      <span>📖</span>
+      <div>
+        <strong>Nossa História</strong>
+        <small>Um livro sobre nós</small>
+      </div>
+    </div>
 
-<button class="voltar" onclick="window.location.href='index.html'">
-← Voltar
-</button>
+    <div class="topbar__actions">
+      <button
+        class="icon-btn"
+        type="button"
+        id="musicButton"
+        title="Ativar ou pausar música"
+        aria-label="Ativar ou pausar música"
+      >
+        🎵
+      </button>
 
-<audio autoplay loop>
-<source src="musica.mp3" type="audio/mpeg">
-</audio>
+      <button
+        class="back-btn"
+        type="button"
+        onclick="window.location.href='index.html'"
+      >
+        ← Voltar
+      </button>
+    </div>
+  </header>
 
-<div class="book" id="book">
+  <audio id="music" loop preload="auto">
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
 
-<!-- PAGINA 1 -->
-<div class="page">
-<h1>Nossa História ❤️</h1>
-<p>
-Um livro sobre nós.
-</p>
-<div class="indicacao">
-Clique no lado direito →
-</div>
-</div>
+  <main class="stage">
+    <section class="book-shell" aria-label="Livro da nossa história">
+      <div class="book" id="book">
 
-<!-- PAGINA 2 -->
-<div class="page">
-<img src="fotos/foto9.jpeg">
-<p>
-Tudo começou sem eu imaginar
-o quanto você seria importante.
-</p>
-</div>
+        <article class="page cover">
+          <span class="page-number">Capa</span>
+          <div class="page-content">
+            <div class="cover-mark">❤️</div>
+            <h1>
+              Nossa
+              <span>História</span>
+            </h1>
+            <p>
+              Um livro sobre momentos, sentimentos e tudo aquilo que fez você
+              se tornar tão importante para mim.
+            </p>
+          </div>
+          <div class="instruction">Toque no lado direito para começar →</div>
+        </article>
 
-<!-- PAGINA 3 -->
-<div class="page">
-<img src="fotos/foto2.jpeg">
-<p>
-Cada conversa foi aproximando a gente.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 01</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto9.jpeg" alt="Uma lembrança especial nossa">
+            </div>
+            <p>
+              Tudo começou sem eu imaginar o quanto você seria importante.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 4 -->
-<div class="page">
-<img src="fotos/foto7.jpeg">
-<p>
-E aos poucos você virou meu lugar favorito.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 02</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto2.jpeg" alt="Uma de nossas primeiras lembranças">
+            </div>
+            <p>
+              Cada conversa foi aproximando a gente.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 5 -->
-<div class="page">
-<img src="fotos/foto6.jpeg">
-<p>
-Nossas primeiras fotos ❤️
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 03</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto7.jpeg" alt="Nós dois juntos">
+            </div>
+            <p>
+              E, aos poucos, você virou o meu lugar favorito.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 6 -->
-<div class="page">
-<img src="fotos/foto35.jpeg">
-<p>
-Momentos simples que ficaram enormes.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 04</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto6.jpeg" alt="Nossas primeiras fotos">
+            </div>
+            <p>
+              Nossas primeiras fotos guardaram o começo de algo muito especial. ❤️
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 7 -->
-<div class="page">
-<img src="fotos/foto1.jpeg">
-<p>
-Seu sorriso sempre foi meu ponto fraco.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 05</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto35.jpeg" alt="Um momento simples e especial">
+            </div>
+            <p>
+              Momentos simples que, para mim, ficaram enormes.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 8 -->
-<div class="page">
-<img src="fotos/foto8.jpeg">
-<p>
-A gente criando memórias sem perceber.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 06</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto1.jpeg" alt="Seu sorriso">
+            </div>
+            <p>
+              Seu sorriso sempre foi o meu ponto fraco.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 9 -->
-<div class="page">
-<img src="fotos/foto29.jpeg">
-<p>
-Até os momentos bobos ficaram especiais.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 07</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto8.jpeg" alt="Criando memórias juntos">
+            </div>
+            <p>
+              A gente foi criando memórias sem nem perceber.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 10 -->
-<div class="page">
-<img src="fotos/foto28.jpeg">
-<p>
-Você virou parte dos meus dias.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 08</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto29.jpeg" alt="Um momento divertido">
+            </div>
+            <p>
+              Até os momentos mais bobos ficaram especiais.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 11 -->
-<div class="page">
-<img src="fotos/foto23.jpeg">
-<p>
-E também dos meus pensamentos.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 09</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto28.jpeg" alt="Uma lembrança dos nossos dias">
+            </div>
+            <p>
+              Você virou parte dos meus dias.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 12 -->
-<div class="page">
-<img src="fotos/foto31.jpeg">
-<p>
-Amo cada detalhe nosso.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 10</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto23.jpeg" alt="Uma lembrança carinhosa">
+            </div>
+            <p>
+              E também passou a fazer parte dos meus pensamentos.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 13 -->
-<div class="page">
-<img src="fotos/foto19.jpeg">
-<p>
-Até nossas loucuras fazem sentido juntas.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 11</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto31.jpeg" alt="Um detalhe especial nosso">
+            </div>
+            <p>
+              Eu amo cada detalhe nosso.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 14 -->
-<div class="page">
-<img src="fotos/foto15.jpeg">
-<p>
-Cada abraço parecia casa.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 12</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto19.jpeg" alt="Uma de nossas loucuras">
+            </div>
+            <p>
+              Até as nossas loucuras fazem sentido quando são juntas.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 15 -->
-<div class="page">
-<img src="fotos/foto28.jpeg">
-<p>
-E cada memória vale ouro pra mim.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 13</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto15.jpeg" alt="Um abraço especial">
+            </div>
+            <p>
+              Cada abraço parecia casa.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 16 -->
-<div class="page">
-<img src="fotos/foto26.jpeg">
-<p>
-Mesmo nos dias difíceis...
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 14</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto28.jpeg" alt="Uma memória valiosa">
+            </div>
+            <p>
+              E cada memória vale ouro para mim.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 17 -->
-<div class="page">
-<img src="fotos/foto29.jpeg">
-<p>
-Eu ainda olho pra você com carinho.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 15</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto26.jpeg" alt="Um momento de carinho">
+            </div>
+            <p>
+              Mesmo nos dias difíceis, eu nunca deixei de lembrar do que sentimos.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 18 -->
-<div class="page">
-<img src="fotos/foto18.jpeg">
-<p>
-Porque nossa história importa pra mim.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 16</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto29.jpeg" alt="Uma lembrança especial">
+            </div>
+            <p>
+              Eu ainda olho para você com todo o carinho do mundo.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 19 -->
-<div class="page">
-<img src="fotos/foto27.jpeg">
-<p>
-E eu ainda quero escrever muitos capítulos.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 17</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto18.jpeg" alt="Um momento importante da nossa história">
+            </div>
+            <p>
+              Porque a nossa história importa muito para mim.
+            </p>
+          </div>
+        </article>
 
-<!-- PAGINA 20 -->
-<div class="page">
-<h1>Continua... ❤️</h1>
-<p>
-Talvez a gente ainda esteja aprendendo.
-<br><br>
-Mas entre todas as possibilidades,
-eu ainda escolheria você.
-</p>
-</div>
+        <article class="page">
+          <span class="page-number">Capítulo 18</span>
+          <div class="page-content">
+            <div class="page-photo">
+              <img src="fotos/foto27.jpeg" alt="Uma lembrança de um novo capítulo">
+            </div>
+            <p>
+              E eu ainda quero escrever muitos capítulos ao seu lado.
+            </p>
+          </div>
+        </article>
 
-</div>
+        <article class="page final-page">
+          <span class="page-number">Continua...</span>
+          <div class="page-content">
+            <div class="final-heart">❤️</div>
+            <h2>
+              Nossa história
+              <span>continua</span>
+            </h2>
+            <p>
+              Talvez a gente ainda esteja aprendendo.<br><br>
+              Mas, entre todas as possibilidades, eu ainda escolheria você.
+            </p>
+          </div>
+        </article>
 
-<script>const pages = document.querySelectorAll('.page')
+      </div>
+    </section>
 
-let current = 0
+    <div class="controls">
+      <button class="control-btn" id="prevButton" type="button">
+        ← Anterior
+      </button>
 
-// Organiza as páginas
-pages.forEach((page, index) => {
+      <span class="counter" id="counter">1 / 20</span>
 
-page.style.zIndex = pages.length - index
+      <button class="control-btn" id="nextButton" type="button">
+        Próxima →
+      </button>
+    </div>
 
-})
+    <div class="progress" aria-hidden="true">
+      <span id="progressBar"></span>
+    </div>
 
-// Clique no celular (SEM DUPLO CLIQUE)
-pages.forEach((page) => {
+    <p class="helper">
+      Você também pode tocar no lado esquerdo ou direito do livro.
+    </p>
+  </main>
 
-page.addEventListener('touchstart', (e) => {
+  <script>
+    const pages = [...document.querySelectorAll(".page")];
+    const prevButton = document.getElementById("prevButton");
+    const nextButton = document.getElementById("nextButton");
+    const counter = document.getElementById("counter");
+    const progressBar = document.getElementById("progressBar");
+    const music = document.getElementById("music");
+    const musicButton = document.getElementById("musicButton");
 
-const toque = e.touches[0]
+    let current = 0;
+    let musicEnabled = false;
 
-const rect = page.getBoundingClientRect()
+    pages.forEach((page, index) => {
+      page.style.zIndex = pages.length - index;
+    });
 
-const cliqueX = toque.clientX - rect.left
+    function updateInterface() {
+      counter.textContent = `${current + 1} / ${pages.length}`;
+      progressBar.style.width =
+        `${((current + 1) / pages.length) * 100}%`;
 
-const largura = page.clientWidth
+      prevButton.disabled = current === 0;
+      nextButton.disabled = current === pages.length - 1;
+    }
 
-// Lado direito = próxima página
-if (cliqueX > largura / 2) {
+    function nextPage() {
+      if (current >= pages.length - 1) return;
 
-nextPage()
+      pages[current].classList.add("flipped");
+      current += 1;
+      updateInterface();
+    }
 
-}
+    function prevPage() {
+      if (current <= 0) return;
 
-// Lado esquerdo = voltar
-else {
+      current -= 1;
+      pages[current].classList.remove("flipped");
+      updateInterface();
+    }
 
-prevPage()
+    prevButton.addEventListener("click", prevPage);
+    nextButton.addEventListener("click", nextPage);
 
-}
+    pages.forEach((page) => {
+      page.addEventListener("click", (event) => {
+        const rect = page.getBoundingClientRect();
+        const clickX = event.clientX - rect.left;
 
-})
+        if (clickX > rect.width / 2) {
+          nextPage();
+        } else {
+          prevPage();
+        }
+      });
 
-})
+      page.addEventListener(
+        "touchstart",
+        (event) => {
+          const touch = event.touches[0];
+          const rect = page.getBoundingClientRect();
+          const clickX = touch.clientX - rect.left;
 
-// Próxima página
-function nextPage() {
+          if (clickX > rect.width / 2) {
+            nextPage();
+          } else {
+            prevPage();
+          }
+        },
+        { passive: true }
+      );
+    });
 
-if (current >= pages.length) return
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") {
+        nextPage();
+      }
 
-pages[current].classList.add('flipped')
+      if (event.key === "ArrowLeft") {
+        prevPage();
+      }
+    });
 
-current++
+    musicButton.addEventListener("click", async () => {
+      try {
+        if (!musicEnabled) {
+          await music.play();
+          musicEnabled = true;
+          musicButton.textContent = "🔊";
+          musicButton.title = "Pausar música";
+        } else {
+          music.pause();
+          musicEnabled = false;
+          musicButton.textContent = "🎵";
+          musicButton.title = "Ativar música";
+        }
+      } catch (error) {
+        console.warn("O navegador bloqueou a reprodução automática.", error);
+      }
+    });
 
-}
-
-// Página anterior
-function prevPage() {
-
-if (current <= 0) return
-
-current--
-
-pages[current].classList.remove('flipped')
-
-}</script>
-
+    updateInterface();
+  </script>
 </body>
 </html>
-
-
-
-

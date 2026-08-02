@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#21101b">
+<title>Em Busca da Fofinha ❤️</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#e85f9b;--pink2:#b83b74;--glass:rgba(24,11,21,.64)}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#180a14;font-family:"DM Sans",sans-serif}
+body{background:radial-gradient(circle at top,#4b1b39,#160912 68%)}
+.app{height:100svh;display:grid;grid-template-rows:auto 1fr auto;gap:10px;padding:10px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;border:1px solid rgba(255,255,255,.14);border-radius:18px;background:var(--glass);backdrop-filter:blur(18px);color:white}
+.brand strong{font-family:"Press Start 2P",monospace;font-size:clamp(.62rem,2vw,.86rem);line-height:1.5}
+.brand small{display:block;margin-top:5px;color:rgba(255,255,255,.58);font-size:.72rem}
+.hud{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.chip{display:inline-flex;min-height:32px;align-items:center;gap:5px;padding:0 9px;border-radius:999px;background:rgba(255,255,255,.09);font-size:.76rem;font-weight:700}
+.game{position:relative;width:min(1180px,100%);height:100%;min-height:0;margin:auto;overflow:hidden;border:1px solid rgba(255,255,255,.2);border-radius:28px;box-shadow:0 30px 90px rgba(0,0,0,.38);background:#efb6c8}
+canvas{display:block;width:100%;height:100%}
+.overlay{position:absolute;z-index:20;inset:0;display:grid;place-items:center;padding:20px;background:rgba(19,7,15,.58);backdrop-filter:blur(10px);transition:.22s}
+.overlay.hidden{opacity:0;visibility:hidden;pointer-events:none}
+.panel{width:min(540px,100%);padding:clamp(24px,5vw,40px);border:1px solid rgba(255,255,255,.3);border-radius:28px;background:linear-gradient(145deg,rgba(255,255,255,.97),rgba(255,235,244,.95));box-shadow:0 34px 90px rgba(0,0,0,.38);text-align:center;color:#2a1723}
+.panel h1,.panel h2{margin:0;font-family:"Press Start 2P",monospace;color:#4b1c38;font-size:clamp(1rem,4vw,1.7rem);line-height:1.6}
+.panel p{color:#755e6d;line-height:1.7}
+.people{display:flex;justify-content:center;gap:28px;margin:22px 0}
+.person img{width:74px;height:98px;image-rendering:pixelated;object-fit:cover;object-position:left top;filter:drop-shadow(0 10px 14px rgba(75,28,57,.18))}
+.person small{display:block;margin-top:6px;font-weight:700;color:#6b4b5d}
+.actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
+.btn{min-height:48px;padding:0 20px;border-radius:999px;border:0;font-weight:700;cursor:pointer}
+.btn.primary{color:white;background:linear-gradient(135deg,var(--pink),var(--pink2));box-shadow:0 14px 30px rgba(185,59,116,.28)}
+.btn.secondary{color:#4b1c38;background:#fff;border:1px solid rgba(75,28,56,.12)}
+.toast{position:absolute;z-index:15;left:50%;bottom:18px;width:min(430px,calc(100% - 28px));padding:14px 16px;border:1px solid rgba(255,255,255,.22);border-radius:18px;background:rgba(35,12,29,.8);color:white;text-align:center;transform:translate(-50%,20px);opacity:0;transition:.22s;backdrop-filter:blur(12px)}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.controls{display:grid;grid-template-columns:1fr auto;align-items:end;width:min(1180px,100%);margin:auto}
+.dpad{display:flex;gap:10px}
+.control,.jump{border:1px solid rgba(255,255,255,.16);color:white;background:rgba(255,255,255,.1);backdrop-filter:blur(12px);cursor:pointer}
+.control{width:68px;height:58px;border-radius:18px;font-size:1.4rem}
+.jump{width:88px;height:68px;border-radius:50%;background:linear-gradient(145deg,var(--pink),var(--pink2));font-weight:800}
+@media(min-width:760px){.controls{display:none}}
+@media(max-width:620px){.app{padding:8px;gap:8px}.topbar{padding:8px 10px}.brand small{display:none}.game{border-radius:20px}.chip{font-size:.68rem;padding:0 7px}.control{width:62px;height:54px}.jump{width:76px;height:62px}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar">
+  <div class="brand">
+    <strong>EM BUSCA DA FOFINHA</strong>
+    <small>Parque do pôr do sol</small>
+  </div>
+  <div class="hud">
+    <span class="chip">❤️ <b id="lives">3</b></span>
+    <span class="chip">🌹 <b id="roses">0</b>/8</span>
+    <span class="chip">💌 <b id="letters">0</b>/3</span>
+    <span class="chip">⏱️ <b id="timer">95</b>s</span>
+  </div>
+</header>
+
+<main class="game">
+<canvas id="canvas"></canvas>
+
+<div class="overlay" id="start">
+  <section class="panel">
+    <h1>EM BUSCA DA FOFINHA ❤️</h1>
+    <p>Corra pelo parque, desvie dos obstáculos, colete rosas e cartas e encontre a Fofinha.</p>
+    <div class="people">
+      <div class="person"><img src="assets/player.png" alt="Personagem masculino moreno, cacheado e de óculos"><small>Você</small></div>
+      <div class="person"><img src="assets/fofinha.png" alt="Personagem feminina branca e ruiva"><small>Fofinha</small></div>
+    </div>
+    <p>No celular use os controles na tela. No computador, setas ou A/D e Espaço.</p>
+    <div class="actions">
+      <button class="btn primary" id="startBtn">Começar aventura</button>
+      <button class="btn secondary" onclick="location.href='index.html'">Voltar ao site</button>
+    </div>
+  </section>
+</div>
+
+<div class="overlay hidden" id="finish">
+  <section class="panel">
+    <h2>VOCÊ ENCONTROU A FOFINHA! 💖</h2>
+    <p id="finishText">Nem os obstáculos impediram este encontro.</p>
+    <div class="people">
+      <div class="person"><img src="assets/player.png" alt=""><small>Você</small></div>
+      <div class="person"><img src="assets/fofinha.png" alt=""><small>Fofinha</small></div>
+    </div>
+    <div class="actions">
+      <button class="btn primary" id="restartBtn">Jogar novamente</button>
+      <button class="btn secondary" onclick="location.href='index.html'">Voltar ao site</button>
+    </div>
+  </section>
+</div>
+
+<div class="toast" id="toast"></div>
+</main>
+
+<section class="controls">
+  <div class="dpad">
+    <button class="control" id="left">◀</button>
+    <button class="control" id="right">▶</button>
+  </div>
+  <button class="jump" id="jump">Pular</button>
+</section>
+</div>
+
+<script>
+const canvas=document.getElementById("canvas"),ctx=canvas.getContext("2d");
+const bg=new Image(),playerImg=new Image(),girlImg=new Image(),roseImg=new Image(),letterImg=new Image();
+bg.src="assets/background.png";playerImg.src="assets/player.png";girlImg.src="assets/fofinha.png";roseImg.src="assets/rose.png";letterImg.src="assets/letter.png";
+
+const UI={lives:document.getElementById("lives"),roses:document.getElementById("roses"),letters:document.getElementById("letters"),timer:document.getElementById("timer"),toast:document.getElementById("toast"),start:document.getElementById("start"),finish:document.getElementById("finish")};
+const keys={left:false,right:false,jump:false};
+const world={w:3600,ground:0,camera:0};
+const player={x:110,y:0,w:40,h:56,vx:0,vy:0,speed:4.2,jump:11.8,grounded:false,facing:1,lives:3,roses:0,letters:0,inv:0,frame:0};
+let running=false,finished=false,startTime=0,timeLeft=95,checkpoint=110;
+
+const platforms=[
+{x:0,w:620,y:0},{x:720,w:480,y:0},{x:1300,w:510,y:0},{x:1900,w:460,y:0},{x:2450,w:520,y:0},{x:3060,w:540,y:0},
+{x:380,w:140,y:150},{x:850,w:120,y:125},{x:1120,w:110,y:220},{x:1450,w:135,y:165},{x:1710,w:100,y:245},
+{x:2150,w:135,y:175},{x:2630,w:115,y:260},{x:2890,w:140,y:185},{x:3260,w:120,y:250}
+];
+const spikes=[{x:620,w:100},{x:1200,w:100},{x:1810,w:90},{x:2360,w:90},{x:2970,w:90}];
+const checkpoints=[{x:1300,on:false},{x:2450,on:false}];
+const enemies=[
+{x:790,min:745,max:1120,dir:1,s:1.6,w:34,h:28},
+{x:1380,min:1330,max:1770,dir:-1,s:1.8,w:34,h:28},
+{x:1990,min:1940,max:2320,dir:1,s:2.0,w:34,h:28},
+{x:2530,min:2490,max:2920,dir:-1,s:2.1,w:34,h:28}
+];
+const roses=[330,460,900,1160,1510,1740,2210,2680].map((x,i)=>({x,y:[100,205,170,275,215,300,225,315][i],got:false}));
+const letters=[
+{x:1020,y:185,text:"💌 Você é o meu lugar favorito.",got:false},
+{x:1760,y:300,text:"💌 Nem a distância muda o que eu sinto.",got:false},
+{x:3330,y:300,text:"💌 Eu escolheria você em todas as fases.",got:false}
+];
+const girl={x:3470,w:40,h:58};
+
+function resize(){const r=canvas.parentElement.getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);canvas.width=r.width*d;canvas.height=r.height*d;canvas.style.width=r.width+"px";canvas.style.height=r.height+"px";ctx.setTransform(d,0,0,d,0,0);world.ground=r.height-72;if(!running)player.y=world.ground-player.h}
+addEventListener("resize",resize);resize();
+
+function reset(){
+Object.assign(player,{x:110,y:world.ground-player.h,vx:0,vy:0,lives:3,roses:0,letters:0,inv:0});
+world.camera=0;checkpoint=110;startTime=performance.now();timeLeft=95;finished=false;
+roses.forEach(o=>o.got=false);letters.forEach(o=>o.got=false);checkpoints.forEach(o=>o.on=false);
+UI.lives.textContent=3;UI.roses.textContent=0;UI.letters.textContent=0;UI.timer.textContent=95;
+}
+function begin(){reset();running=true;UI.start.classList.add("hidden");UI.finish.classList.add("hidden")}
+document.getElementById("startBtn").onclick=begin;document.getElementById("restartBtn").onclick=begin;
+
+function py(p){return world.ground-p.y}
+function hit(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y}
+
+function update(){
+if(keys.left){player.vx-=.75;player.facing=-1}
+if(keys.right){player.vx+=.75;player.facing=1}
+player.vx=Math.max(-player.speed,Math.min(player.speed,player.vx));
+if(!keys.left&&!keys.right)player.vx*=.82;
+if(keys.jump&&player.grounded){player.vy=-player.jump;player.grounded=false}
+keys.jump=false;player.vy+=.62;
+const prev=player.y;player.x+=player.vx;player.y+=player.vy;player.grounded=false;
+
+for(const p of platforms){
+ const box={x:p.x,y:py(p),w:p.w,h:80};
+ if(hit(player,box)&&player.vy>=0&&prev+player.h<=box.y+8){player.y=box.y-player.h;player.vy=0;player.grounded=true}
+}
+player.x=Math.max(0,Math.min(world.w-player.w,player.x));
+if(player.y>canvas.clientHeight+100)lose();
+
+for(const e of enemies){e.x+=e.s*e.dir;if(e.x<=e.min||e.x>=e.max)e.dir*=-1}
+if(performance.now()>player.inv){
+ for(const s of spikes)if(hit(player,{x:s.x,y:world.ground-22,w:s.w,h:22}))lose();
+ for(const e of enemies)if(hit(player,{x:e.x,y:world.ground-28,w:e.w,h:e.h}))lose();
+}
+
+for(const r of roses)if(!r.got&&hit(player,{x:r.x-14,y:world.ground-r.y-14,w:28,h:28})){r.got=true;player.roses++;UI.roses.textContent=player.roses;toast("🌹 Rosa coletada!")}
+for(const l of letters)if(!l.got&&hit(player,{x:l.x-18,y:world.ground-l.y-14,w:36,h:28})){l.got=true;player.letters++;UI.letters.textContent=player.letters;toast(l.text,2400)}
+for(const c of checkpoints)if(!c.on&&player.x>=c.x){c.on=true;checkpoint=c.x+20;toast("🚩 Checkpoint alcançado!")}
+
+timeLeft=Math.max(0,95-Math.floor((performance.now()-startTime)/1000));UI.timer.textContent=timeLeft;
+if(timeLeft===0){lose();startTime=performance.now()}
+
+if(player.x+player.w>=girl.x){running=false;finished=true;document.getElementById("finishText").textContent=(player.roses===8&&player.letters===3)?"Você coletou tudo e encontrou a Fofinha. Amor completo! 💖":"Você venceu a fase e encontrou a Fofinha. ❤️";UI.finish.classList.remove("hidden")}
+const target=player.x-canvas.clientWidth*.38;world.camera+=(target-world.camera)*.08;world.camera=Math.max(0,Math.min(world.w-canvas.clientWidth,world.camera));
+player.frame=Math.floor(performance.now()/120)%4;
+}
+
+function lose(){
+if(performance.now()<player.inv)return;
+player.lives--;UI.lives.textContent=player.lives;player.inv=performance.now()+1400;
+if(player.lives<=0){player.lives=3;UI.lives.textContent=3;checkpoint=110;checkpoints.forEach(c=>c.on=false);toast("💔 Recomeçando por amor!",1800)}
+else toast("💔 Você perdeu um coração!");
+player.x=checkpoint;player.y=world.ground-player.h-70;player.vx=0;player.vy=-4;
+}
+
+function toast(t,d=1500){UI.toast.textContent=t;UI.toast.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>UI.toast.classList.remove("show"),d)}
+
+function draw(){
+ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
+ctx.drawImage(bg,0,0,canvas.clientWidth,canvas.clientHeight);
+ctx.save();ctx.translate(-world.camera,0);
+
+for(const p of platforms){
+ const y=py(p);ctx.fillStyle="#81543f";ctx.fillRect(p.x,y,p.w,80);ctx.fillStyle="#4d9158";ctx.fillRect(p.x,y,p.w,14);
+}
+for(const c of checkpoints){const y=world.ground-65;ctx.fillStyle="#5f3e2f";ctx.fillRect(c.x,y,5,65);ctx.fillStyle=c.on?"#5dd07f":"#f7c75d";ctx.beginPath();ctx.moveTo(c.x+5,y+4);ctx.lineTo(c.x+38,y+16);ctx.lineTo(c.x+5,y+28);ctx.fill()}
+for(const s of spikes){for(let x=s.x;x<s.x+s.w;x+=18){ctx.fillStyle="#5d5360";ctx.beginPath();ctx.moveTo(x,world.ground);ctx.lineTo(x+9,world.ground-22);ctx.lineTo(x+18,world.ground);ctx.fill()}}
+for(const e of enemies){ctx.fillStyle="#65415f";ctx.fillRect(e.x,world.ground-28,e.w,e.h);ctx.fillStyle="#fff";ctx.fillRect(e.x+(e.dir>0?22:8),world.ground-20,5,5)}
+for(const r of roses)if(!r.got)ctx.drawImage(roseImg,r.x-16,world.ground-r.y-16,32,32);
+for(const l of letters)if(!l.got)ctx.drawImage(letterImg,l.x-18,world.ground-l.y-14,36,28);
+
+const f=player.grounded&&Math.abs(player.vx)>.3?player.frame:0;
+ctx.save();ctx.translate(player.x+(player.facing<0?player.w:0),player.y);ctx.scale(player.facing,1);ctx.drawImage(playerImg,f*48,0,48,64,0,-8,48,64);ctx.restore();
+
+const gf=Math.floor(performance.now()/420)%2;
+ctx.drawImage(girlImg,gf*48,0,48,64,girl.x,world.ground-girl.h-6,48,64);
+ctx.fillStyle="rgba(255,255,255,.9)";ctx.fillRect(girl.x-28,world.ground-girl.h-39,110,25);ctx.fillStyle="#4b1c38";ctx.font="bold 12px DM Sans";ctx.fillText("Fofinha ❤️",girl.x-16,world.ground-girl.h-21);
+
+ctx.restore();
+}
+
+function loop(){if(running&&!finished)update();draw();requestAnimationFrame(loop)}requestAnimationFrame(loop);
+
+function hold(el,key){el.onpointerdown=e=>{e.preventDefault();keys[key]=true};["onpointerup","onpointercancel","onpointerleave"].forEach(n=>el[n]=e=>{e.preventDefault();keys[key]=false})}
+hold(document.getElementById("left"),"left");hold(document.getElementById("right"),"right");
+document.getElementById("jump").onpointerdown=e=>{e.preventDefault();keys.jump=true};
+addEventListener("keydown",e=>{if(["ArrowLeft","a","A"].includes(e.key))keys.left=true;if(["ArrowRight","d","D"].includes(e.key))keys.right=true;if(["ArrowUp","w","W"," "].includes(e.key)){e.preventDefault();keys.jump=true}});
+addEventListener("keyup",e=>{if(["ArrowLeft","a","A"].includes(e.key))keys.left=false;if(["ArrowRight","d","D"].includes(e.key))keys.right=false});
+</script>
+</body>
+</html>
